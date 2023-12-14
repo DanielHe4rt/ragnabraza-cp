@@ -4,7 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\Game\AccountSexEnum;
+use App\Models\Game\Character;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -14,6 +17,7 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * @property-read string $userid
  * @property AccountSexEnum $sex
+ * @property Carbon $lastlogin
  */
 class User extends Authenticatable
 {
@@ -54,6 +58,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'sex' => AccountSexEnum::class,
+        'lastlogin' => 'datetime',
     ];
 
     /**
@@ -68,5 +73,10 @@ class User extends Authenticatable
     public function getAuthPassword()
     {
         return $this->user_pass;
+    }
+
+    public function characters(): HasMany
+    {
+        return $this->hasMany(Character::class, 'account_id', 'account_id');
     }
 }
