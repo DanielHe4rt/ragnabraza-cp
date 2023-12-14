@@ -8,20 +8,15 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
         <!-- Styles -->
-        @livewireStyles
-    </head>
-    <body>
-        <div class="font-sans text-gray-900 dark:text-gray-100 antialiased">
-            {{ $slot }}
-        </div>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        @livewireScripts
+        @livewireStyles
+        @vite(['resources/js/app.js', 'resources/sass/app.scss'])
+    </head>
+    <body class="bg-light font-sans antialiased">
+        {{ $slot }}
     </body>
 </html>

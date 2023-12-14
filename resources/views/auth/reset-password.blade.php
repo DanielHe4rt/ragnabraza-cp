@@ -4,33 +4,47 @@
             <x-authentication-card-logo />
         </x-slot>
 
-        <x-validation-errors class="mb-4" />
+        <div class="card-body">
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+            <x-validation-errors class="mb-3" />
 
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <form method="POST" action="/reset-password">
+                @csrf
 
-            <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            </div>
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
+                <div class="mb-3">
+                    <x-label value="{{ __('Email') }}" />
 
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+                    <x-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
+                                 :value="old('email', $request->email)" required autofocus />
+                    <x-input-error for="email"></x-input-error>
+                </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
+                <div class="mb-3">
+                    <x-label value="{{ __('Password') }}" />
+
+                    <x-input class="{{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
+                                 name="password" required autocomplete="new-password" />
+                    <x-input-error for="password"></x-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-label value="{{ __('Confirm Password') }}" />
+
+                    <x-input class="{{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" type="password"
+                                 name="password_confirmation" required autocomplete="new-password" />
+                    <x-input-error for="password_confirmation"></x-input-error>
+                </div>
+
+                <div class="mb-0">
+                    <div class="d-flex justify-content-end">
+                        <x-button>
+                            {{ __('Reset Password') }}
+                        </x-button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </x-authentication-card>
 </x-guest-layout>

@@ -15,7 +15,7 @@
 </span>
 
 @once
-<x-dialog-modal wire:model.live="confirmingPassword">
+<x-dialog-modal wire:model="confirmingPassword">
     <x-slot name="title">
         {{ $title }}
     </x-slot>
@@ -24,12 +24,12 @@
         {{ $content }}
 
         <div class="mt-4" x-data="{}" x-on:confirming-password.window="setTimeout(() => $refs.confirmable_password.focus(), 250)">
-            <x-input type="password" class="mt-1 block w-3/4" placeholder="{{ __('Password') }}" autocomplete="current-password"
-                        x-ref="confirmable_password"
-                        wire:model="confirmablePassword"
-                        wire:keydown.enter="confirmPassword" />
+            <x-input type="password" class="{{ $errors->has('confirmable_password') ? 'is-invalid' : '' }}" placeholder="{{ __('Password') }}"
+                         x-ref="confirmable_password"
+                         wire:model.defer="confirmablePassword"
+                         wire:keydown.enter="confirmPassword" />
 
-            <x-input-error for="confirmable_password" class="mt-2" />
+            <x-input-error for="confirmable_password" />
         </div>
     </x-slot>
 
@@ -38,7 +38,11 @@
             {{ __('Cancel') }}
         </x-secondary-button>
 
-        <x-button class="ms-3" dusk="confirm-password-button" wire:click="confirmPassword" wire:loading.attr="disabled">
+        <x-button class="ms-2" wire:click="confirmPassword" wire:loading.attr="disabled">
+            <div wire:loading wire:target="confirmPassword" class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
             {{ $button }}
         </x-button>
     </x-slot>

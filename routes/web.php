@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Game\AccountOverviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
     ->prefix('player')
     ->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/overview', [AccountOverviewController::class, 'viewAccountOverview'])->name('game.overview');
 });

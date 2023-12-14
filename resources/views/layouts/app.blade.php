@@ -8,46 +8,47 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
         <!-- Styles -->
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+
         @livewireStyles
+        @vite(['resources/js/app.js', 'resources/sass/app.scss'])
+
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased ">
+    <body class="font-sans antialiased bg-light">
         <x-banner />
+        @livewire('navigation-menu')
 
+        <!-- Page Heading -->
+        <header class="d-flex py-3 bg-white shadow-sm border-bottom">
+            <div class="container">
+                {{ $header }}
+            </div>
+        </header>
 
-        <div class="lg:flex flex-col lg:flex-row lg:min-h-screen w-full bg-gray-100 dark:bg-gray-900">
-            <x-sidebar-menu></x-sidebar-menu>
-
-            <div class="w-full">
-                <x-motd></x-motd>
-
-                <!-- Page Heading -->
-                @if (isset($header))
-                    <header class="bg-white dark:bg-gray-800 shadow">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            {{ $header }}
-                        </div>
-                    </header>
-                @endif
-
-                <!-- Page Content -->
-                <main>
+        <!-- Page Content -->
+        <main class="container my-5">
+            <div class="row">
+                <div class="col-3 d-sm-block d-md-block d-none ">
+                    <x-sidebar-menu></x-sidebar-menu>
+                </div>
+                <div class="col">
                     {{ $slot }}
-                </main>
+                </div>
             </div>
 
-
-
-        </div>
+        </main>
 
         @stack('modals')
 
         @livewireScripts
+
+        @stack('scripts')
+
     </body>
 </html>
