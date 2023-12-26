@@ -21,6 +21,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
     ->prefix('player')
     ->group(function () {
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
-    Route::get('/overview', [AccountOverviewController::class, 'viewAccountOverview'])->name('game.overview');
-});
+        Route::view('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/overview', [AccountOverviewController::class, 'viewAccountOverview'])->name('game.overview');
+    });

@@ -1,5 +1,6 @@
 @props(['isMobile'])
 <div class="d-flex align-items-center">
+    @auth()
     <div >
         <span >{{ Auth::user()->userid }}</span>
         <br>
@@ -17,4 +18,5 @@
                   clip-rule="evenodd"/>
         </svg>
     </div>
+    @endauth
 </div>

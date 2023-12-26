@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\Game\AccountSexEnum;
 use App\Models\Game\Character;
+use App\Models\Game\Storage;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -78,5 +79,10 @@ class User extends Authenticatable
     public function characters(): HasMany
     {
         return $this->hasMany(Character::class, 'account_id', 'account_id');
+    }
+
+    public function storageItems(): HasMany
+    {
+        return $this->hasMany(Storage::class, 'account_id', 'account_id');
     }
 }

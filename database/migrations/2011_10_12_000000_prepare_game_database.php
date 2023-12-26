@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -15,6 +15,7 @@ return new class extends Migration {
         foreach ($this->getMigrationFiles() as $migrationFile) {
             dump($migrationFile);
             $rawQueries = File::get($migrationFile);
+            //            DB::connection('mysql')->unprepared($rawQueries);
 
             $this->executeQueries($rawQueries);
         }
@@ -34,6 +35,7 @@ return new class extends Migration {
     private function getMigrationFiles(): array
     {
         $fullPath = storage_path('app/game_sqls/*.sql');
+
         return glob($fullPath);
     }
 
@@ -46,7 +48,7 @@ return new class extends Migration {
             if (empty($query)) {
                 continue;
             }
-
+            dump($query);
             DB::connection('mysql')->statement($query);
         }
     }

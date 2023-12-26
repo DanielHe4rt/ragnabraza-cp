@@ -1,8 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
-    <div class="container">
+<nav class="navbar navbar-expand-md navbar-dark">
+    <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand me-4" href="/">
             <x-application-mark width="36"/>
+            Ragnafodase
         </a>
         <div class="d-flex flex-row">
             <div class="navbar-toggler border-0">
