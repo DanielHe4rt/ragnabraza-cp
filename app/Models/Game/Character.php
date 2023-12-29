@@ -30,6 +30,7 @@ class Character extends Model
         'guild_id',
         'online',
         'last_login',
+        'last_map',
         'settings'
     ];
 

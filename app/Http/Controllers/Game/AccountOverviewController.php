@@ -14,13 +14,4 @@ class AccountOverviewController extends Controller
         return view('game.overview');
     }
 
-    public function viewCharacterSettings(int $characterId): View
-    {
-        $char = Character::query()->where([
-            ['account_id', '=', auth()->user()->getKey()],
-            ['char_id', '=', $characterId],
-        ])->firstOrFail();
-
-        return view('game.characters.settings', ['character' => $char]);
-    }
 }
