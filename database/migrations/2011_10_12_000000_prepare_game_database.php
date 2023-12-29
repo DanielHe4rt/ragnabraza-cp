@@ -12,12 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        return;
         foreach ($this->getMigrationFiles() as $migrationFile) {
-            dump($migrationFile);
             $rawQueries = File::get($migrationFile);
-            //            DB::connection('mysql')->unprepared($rawQueries);
+            DB::connection('mysql')->unprepared($rawQueries);
 
-            $this->executeQueries($rawQueries);
+            //$this->executeQueries($rawQueries);
         }
     }
 
@@ -48,7 +48,6 @@ return new class extends Migration
             if (empty($query)) {
                 continue;
             }
-            dump($query);
             DB::connection('mysql')->statement($query);
         }
     }

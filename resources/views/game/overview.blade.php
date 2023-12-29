@@ -43,7 +43,7 @@
                                             <span class="badge text-bg-secondary">Offline</span>
                                         @endif
                                     </div>
-                                    <div class="btn btn-warning btn-sm">Preferences</div>
+                                    <a href="{{ route('game.character.settings', $character->getKey()) }}" class="btn btn-warning btn-sm">Preferences</a>
                                 </div>
                                 <div class="text-center">
                                     <img width="120" src="{{ asset('images/character_preview.png') }}"
