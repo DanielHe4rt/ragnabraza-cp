@@ -26,7 +26,7 @@ class Character extends Model
     ];
 
     protected $casts = [
-        'class' => JobEnum::class
+        'class' => JobEnum::class,
     ];
 
     public function user(): BelongsTo

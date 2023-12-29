@@ -9,7 +9,7 @@ enum AccountSexEnum: string
 
     public function getLabel(): string
     {
-        return match($this) {
+        return match ($this) {
             self::Male => 'Male',
             self::Female => 'Female',
         };

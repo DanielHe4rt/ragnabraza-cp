@@ -36,7 +36,7 @@ class User extends Authenticatable
         'userid',
         'user_pass',
         'email',
-        'birthdate'
+        'birthdate',
     ];
 
     /**
