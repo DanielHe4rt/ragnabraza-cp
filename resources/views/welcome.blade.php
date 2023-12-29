@@ -18,7 +18,7 @@
 </head>
 <body class="antialiased text-bg-dark">
 <x-banner/>
-@livewire('navigation-menu')
+<x-navigation-menu/>
 <div id="banners">
     <x-landing.slider></x-landing.slider>
 </div>

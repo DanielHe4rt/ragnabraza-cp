@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark">
+<nav class="navbar navbar-expand-md navbar-dark text-bg-dark">
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand me-4" href="/">

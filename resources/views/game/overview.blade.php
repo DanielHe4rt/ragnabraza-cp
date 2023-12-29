@@ -5,27 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="card mb-3">
-        <div class="card-header d-flex justify-content-between">
-            <div class="d-flex flex-column">
-                <div>Kadoodle</div>
-                <div class="small">Username</div>
-            </div>
-            <div class="d-flex flex-column">
-                <div>{{ auth()->user()->lastlogin?->format('Y-m-d H:i:s') ?: 'Never'}}</div>
-                <div class="small">Last Login</div>
-            </div>
-            <div class="d-flex flex-column">
-                <div>{{ '127.0.0.1' }}</div>
-                <div class="small">Last Login</div>
-            </div>
-            <div class="d-flex flex-row align-items-center ">
-                <span class="badge text-bg-success mx-1">Online</span>
-                <span class="badge text-bg-info mx-1">100.000 RF</span>
-                <span class="badge text-bg-warning mx-1">VIP</span>
-            </div>
-        </div>
-    </div>
+    <x-game.account-info-bar :user="auth()->user()"/>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Characters</h5>
